@@ -13,12 +13,12 @@
 
 #define direccion "/home/lp1-2023/Escritorio/csv nuevo.csv"
 
-void copiar (FILE a, FILE b)
+void copiar (FILE *a, FILE *b)
 {
 int c,cont;
-char filename;
+char *filename=NULL;
 printf("ingrese la direccion del archivo a leer: \n");
-scanf("%s",&filename);
+scanf("%s",filename);
 if ((b=fopen(direccion,"w"))==NULL)
 {
 	printf("error en archivo b\n");
@@ -33,19 +33,17 @@ if ((a=fopen(filename,"r"))==NULL)
 		cont+=1;
 		while(cont>3 && cont<5)
 		{
-			
+			fputc(c,b);
 		}
 	}
 	}
-closefile(a);
-closefile(b);
+fclose(a);
+fclose(b);
 }
 
-void main()
-{	
-int c,cont;
-char filename;
-FILE *a,*b;
+int main()
+{
+FILE *a=NULL;
+FILE *b=NULL;
 copiar(a,b);
-
 }
